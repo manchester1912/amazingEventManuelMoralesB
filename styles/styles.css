@@ -1,0 +1,6 @@
+.archors{width: auto;
+transition: all 1s;}
+
+.archors:hover{
+text-decoration: underline;
+color: red;}
