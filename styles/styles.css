@@ -5,4 +5,13 @@ transition: all 1s;}
 text-decoration: underline;
 color: red;}
 
+.carousel1{border: 3px solid blue;
+    max-height: 30vh;
+    width: 100%;
+}
+
+.carousel1 img{object-fit: cover;}
+
+#div{display: flex;
+flex-direction: column;}
 
