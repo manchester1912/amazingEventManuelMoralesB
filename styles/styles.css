@@ -14,3 +14,6 @@ color: red;}
 .carousel1 img{height: 100%;
         object-fit: fill;
 }
+
+body{background-image: url(/resources//optional_banner_4.jpg);
+background-size: cover;}
