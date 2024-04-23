@@ -5,9 +5,7 @@ transition: all 1s;}
 text-decoration: underline;
 color: red;}
 
-.border1912{border: 3px solid red}
-
-.border1927{border: 3px solid red;}
+.border1912{border: 3vw solid grey}
 
 .carousel1{height: 30vh;    
 }
@@ -16,10 +14,12 @@ color: red;}
         object-fit: fill;
 }
 
-body{background-image: url(/resources//optional_banner_4.jpg);
+.body{background-image: url(/resources//optional_banner_4.jpg);
 background-size: cover;}
 
-.cardImg{height: 184px;}
+.bodyDatails{background-color: lightgrey;}
+
+
 
 
 
