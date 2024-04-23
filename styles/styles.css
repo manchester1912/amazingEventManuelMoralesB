@@ -7,6 +7,8 @@ color: red;}
 
 .border1912{border: 3px solid green;}
 
+.border1927{border: 3px solid red;}
+
 .carousel1{border: 3px solid blue;
     height: 30vh;    
 }
@@ -17,3 +19,4 @@ color: red;}
 
 body{background-image: url(/resources//optional_banner_4.jpg);
 background-size: cover;}
+
