@@ -19,6 +19,11 @@ background-size: cover;}
 
 .bodyDetails{background-color: lightgrey;}
 
+.tableEvents table, th, td {border: 2px solid black;
+}
+
+th, td{padding: 0 0.5vw;}
+
 
 
 
