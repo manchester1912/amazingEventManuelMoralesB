@@ -11,7 +11,9 @@ color: red;}
 }
 
 .carousel1 img{height: 100%;
-        object-fit: fill;
+        width: 100%;
+        object-fit: cover;
+        
 }
 
 .body{background-image: url(/resources//optional_banner_4.jpg);
@@ -23,6 +25,47 @@ background-size: cover;}
 }
 
 th, td{padding: 0 0.5vw;}
+
+
+/* Styles Javascript*/
+
+.cards{
+        border: 3px solid red;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+     align-items: center;
+     text-align: center; 
+    margin: 1vw;
+    border-radius: 15px;
+        
+}
+
+.cards img{
+        width: 300px;
+        height: auto;
+        margin-bottom: 2vh;
+       
+}
+
+#fatherContainer{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      
+       
+      
+}
+
+.price{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        align-items: center;
+}
+
+
 
 
 
