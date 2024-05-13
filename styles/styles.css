@@ -1,73 +1,83 @@
-.archors{width: auto;
-transition: all 1s;}
-
-.archors:hover{
-text-decoration: underline;
-color: red;}
-
-.border1912{border: 3vw solid grey}
-
-.carousel1{height: 30vh;    
+.archors {
+        width: auto;
+        transition: all 1s;
 }
 
-.carousel1 img{height: 100%;
+.archors:hover {
+        text-decoration: underline;
+        color: red;
+}
+
+.border1912 {
+        border: 3vw solid grey
+}
+
+.carousel1 {
+        height: 30vh;
+}
+
+.carousel1 img {
+        height: 100%;
         width: 100%;
         object-fit: cover;
-        
+
 }
 
-.body{background-image: url(/resources//optional_banner_4.jpg);
-background-size: cover;}
-
-.bodyDetails{background-color: lightgrey;}
-
-.tableEvents table, th, td {border: 2px solid black;
+.body {
+        background-image: url(/resources//optional_banner_4.jpg);
+        background-size: cover;
 }
 
-th, td{padding: 0 0.5vw;}
+.bodyDetails {
+        background-color: lightgrey;
+}
+
+.tableEvents table,
+th,
+td {
+        border: 2px solid black;
+}
+
+th,
+td {
+        padding: 0 0.5vw;
+}
 
 
-/* Styles Javascript*/
+/* styles for javascript*/
 
-.cards{
+.cards {
         border: 3px solid red;
         width: 350px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-     align-items: center;
-     text-align: center; 
-    margin: 1vw;
-    border-radius: 15px;
-        
+        align-items: center;
+        text-align: center;
+        margin: 1vw;
+        border-radius: 15px;
+
 }
 
-.cards img{
+.cards img {
         width: 300px;
         height: auto;
         margin-bottom: 2vh;
-       
+
 }
 
-#fatherContainer{
+#fatherContainer {
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
-      
-       
-      
+
+
+
 }
 
-.price{
+.price {
         display: flex;
         justify-content: space-between;
         width: 90%;
         align-items: center;
 }
-
-
-
-
-
-
-

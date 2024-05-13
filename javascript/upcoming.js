@@ -230,7 +230,7 @@ let data = {
       let newChild = document.createElement("div")
       newChild.classList.add("price", "fw-bold", "fs-5")
       newChild.innerHTML = ` <p>Price: ${card.price} ${"USD"}</p>
-      <a href="/elementosTarjetas.html" class="btn btn-danger">Details</a>`
+      <a href="/details.html" class="btn btn-danger">Details</a>`
       
       
       cardsContainer.appendChild(generateCard)
