@@ -20,11 +20,12 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+     
 
 }
 
 .body {
-        background-image: url(/resources//optional_banner_4.jpg);
+        background-image: url(/resources/fondoBody.webp);
         background-size: cover;
 }
 
@@ -49,20 +50,23 @@ td {
 .cards {
         border: 3px solid red;
         width: 350px;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        margin: 1vw;
+      
         border-radius: 15px;
 
 }
 
 .cards img {
         width: 300px;
-        height: auto;
+        max-height: 45%;
         margin-bottom: 2vh;
+        border-radius: 15px;
+        border: 3px solid red;
 
 }
 
@@ -79,3 +83,4 @@ td {
         width: 90%;
         align-items: center;
 }
+
