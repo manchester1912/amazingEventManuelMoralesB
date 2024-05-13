@@ -197,13 +197,12 @@ let data = {
 
 let cardsContainer = document.getElementById("fatherContainer")
 
-
 cardsHtml(data.events, cardsContainer)
 
 function cardsHtml(arrayData, cardsContainer) {
     for (let index = 0; index < arrayData.length; index++) {
         createdCard(cardsContainer, arrayData[index])
-        
+      
     }
     }
 
@@ -211,7 +210,6 @@ function createdCard(cardsContainer, card) {
     let generateCard = document.createElement("div")
     generateCard.classList.add("cards")
    
-
     generateCard.innerHTML = 
     `<h2>${card.name}</h2>
     <p>${card.description}</p>
@@ -221,10 +219,8 @@ function createdCard(cardsContainer, card) {
     newChild.classList.add("price", "fw-bold", "fs-5")
     newChild.innerHTML = ` <p>Price: ${card.price} ${"USD"}</p>
     <a href="/details.html" class="btn btn-danger">Details</a>`
-    
-    
+        
     cardsContainer.appendChild(generateCard)
     generateCard.appendChild(newChild)
-
     
 }

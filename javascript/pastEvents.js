@@ -196,17 +196,15 @@ let data = {
   }
 
   let pastEvents = []
-  let currentDate = "2023-01-01"
 
   for (let index = 0; index < data.events.length; index++) {
-    if (currentDate > data.events[index].date) {
+    if (data.currentDate > data.events[index].date) {
        pastEvents.push(data.events[index])
     }
   }
 
   let cardsContainer = document.getElementById("fatherContainer")
- 
-  
+   
   cardsHtml(pastEvents, cardsContainer)
   
   function cardsHtml(arrayData, cardsContainer) {
@@ -220,8 +218,7 @@ let data = {
   function createdCard(cardsContainer, card) {
       let generateCard = document.createElement("div")
       generateCard.classList.add("cards")
-     
-  
+       
       generateCard.innerHTML = 
       `<h2>${card.name}</h2>
       <p>${card.description}</p>
@@ -231,10 +228,8 @@ let data = {
       newChild.classList.add("price", "fw-bold", "fs-5")
       newChild.innerHTML = ` <p>Price: ${card.price} ${"USD"}</p>
       <a href="/details.html" class="btn btn-danger">Details</a>`
-      
-      
+            
       cardsContainer.appendChild(generateCard)
       generateCard.appendChild(newChild)
-  
-      
+       
   }
