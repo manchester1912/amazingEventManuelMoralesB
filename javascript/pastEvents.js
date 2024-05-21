@@ -208,6 +208,7 @@ let data = {
   cardsHtml(pastEvents, cardsContainer)
   
   function cardsHtml(arrayData, cardsContainer) {
+    cardsContainer.innerHTML=""
       for (let index = 0; index < arrayData.length; index++) {
           createdCard(cardsContainer, arrayData[index])
           
@@ -233,3 +234,56 @@ let data = {
       generateCard.appendChild(newChild)
        
   }
+
+  // desde aqui sprint 3
+
+let checkDiv = document.getElementById("checkboxFather")
+
+
+
+let createCheck = (cardsContainer, arrayData)=>{
+    let newCheck = document.createElement("div")
+    
+
+    newCheck.innerHTML = `
+    <input class="mx-1" type="checkbox" name="event" value="${arrayData.category}">
+    <label class="me-1">${arrayData.category}</label>`
+
+    cardsContainer.appendChild(newCheck)
+
+   
+}
+
+let addCheck = (divFather, arrayData)=>{
+   
+    for (let index = 0; index < arrayData.length; index++) {
+        createCheck(divFather,arrayData[index])
+        
+    }}
+
+addCheck(checkDiv, pastEvents)
+
+checkDiv.addEventListener("change", (e)=>{
+   
+  let newArray = pastEvents.filter(arrayCategory => arrayCategory.category == e.target.value)
+  if (e.target.checked) {
+      cardsHtml(newArray, cardsContainer)
+  }else(cardsHtml(pastEvents, cardsContainer))
+  
+  })
+
+
+  // desde aqui barra busqueda
+
+let searchbar = document.getElementById("search")
+
+
+searchbar.addEventListener("input", (e)=>
+   { let searchFilter = pastEvents.filter(array=> array.name.toLowerCase().includes(e.target.value.toLowerCase())
+|| array.description.toLowerCase().includes(e.target.value.toLowerCase()) )
+    if (e.target.value != "") {
+        cardsHtml(searchFilter, cardsContainer)
+    }else(cardsHtml(pastEvents, cardsContainer))
+   }
+
+)

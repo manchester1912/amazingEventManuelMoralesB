@@ -195,11 +195,13 @@ let data = {
     ],
   }
 
-let cardsContainer = document.getElementById("fatherContainer")
+let divContainer = document.getElementById("fatherContainer")
 
-cardsHtml(data.events, cardsContainer)
+cardsHtml(data.events, divContainer)
+
 
 function cardsHtml(arrayData, cardsContainer) {
+    cardsContainer.innerHTML=""
     for (let index = 0; index < arrayData.length; index++) {
         createdCard(cardsContainer, arrayData[index])
       
@@ -224,3 +226,70 @@ function createdCard(cardsContainer, card) {
     generateCard.appendChild(newChild)
     
 }
+
+// a partir de aqui sprint 3 url
+
+let arrayCategory = []
+
+data.events.forEach(obj => {
+  if(!arrayCategory.some(item => item.category === obj.category)) {
+    arrayCategory.push(obj)
+  }
+})
+
+
+
+let checkDiv = document.getElementById("checkboxFather")
+
+
+
+let createCheck = (divContainer, arrayData)=>{
+    let newCheck = document.createElement("div")
+    
+
+    newCheck.innerHTML = `
+    <input class="mx-1" type="checkbox" name="event" value="${arrayData.category}">
+    <label class="me-1">${arrayData.category}</label>`
+
+    divContainer.appendChild(newCheck)
+
+   
+}
+
+let addCheck = (divFather, arrayData)=>{
+   
+    for (let index = 0; index < arrayData.length; index++) {
+        createCheck(divFather,arrayData[index])
+        
+    }}
+
+addCheck(checkDiv, arrayCategory)
+
+
+
+checkDiv.addEventListener("change", (e)=>{
+   
+let newArray = data.events.filter(arrayCategory => arrayCategory.category == e.target.value)
+if (e.target.checked) {
+    cardsHtml(newArray, divContainer)
+}else(cardsHtml(data.events, divContainer))
+
+})
+
+
+// desde aqui barra busqueda
+
+let searchbar = document.getElementById("search")
+
+
+searchbar.addEventListener("input", (e)=>
+   { let searchFilter = data.events.filter(array=> array.name.toLowerCase().includes(e.target.value.toLowerCase())
+|| array.description.toLowerCase().includes(e.target.value.toLowerCase()) )
+    if (e.target.value != "") {
+        cardsHtml(searchFilter, divContainer)
+    }else(cardsHtml(data.events, divContainer))
+   }
+
+)
+
+
