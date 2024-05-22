@@ -195,95 +195,39 @@ let data = {
     ],
   }
 
-  let pastEvents = []
 
-  for (let index = 0; index < data.events.length; index++) {
-    if (data.currentDate > data.events[index].date) {
-       pastEvents.push(data.events[index])
-    }
-  }
+let UrlParams = new URLSearchParams(window.location.search)
 
-  let cardsContainer = document.getElementById("fatherContainer")
-   
-  cardsHtml(pastEvents, cardsContainer)
-  
-  function cardsHtml(arrayData, cardsContainer) {
-    cardsContainer.innerHTML=""
-      for (let index = 0; index < arrayData.length; index++) {
-          createdCard(cardsContainer, arrayData[index])
-          
-      }
-      
-  }
-  
-  function createdCard(cardsContainer, card) {
-      let generateCard = document.createElement("div")
-      generateCard.classList.add("cards", "pt-2", "my-2", "mx-2", "text-white")
-       
-      generateCard.innerHTML = 
-      `<img src="${card.image}" alt="">
-      <h2>${card.name}</h2>
-      <p>${card.description}</p>`
-  
-      let newChild = document.createElement("div")
-      newChild.classList.add("price", "fw-bold", "fs-5", "pb-2")
-      newChild.innerHTML = ` <p>Price: ${card.price} ${"USD"}</p>
-      <a href="/details.html?id=${card._id}" class="btn btn-danger">Details</a>`
-            
-      cardsContainer.appendChild(generateCard)
-      generateCard.appendChild(newChild)
-       
-  }
+let details = UrlParams.get("id")
+console.log(details);
 
-  // desde aqui sprint 3
+let evento = data.events.find(evento=> evento._id === details)
 
-let checkDiv = document.getElementById("checkboxFather")
+console.log(evento);
 
+let divContainer = document.getElementById("fatherContainer")
 
+let eventDetail = `
+<div class="col-12 col-xl-6 d-flex justify-content-center p-4 my-4 border1912">
+        <img src="${evento.image}" class="img-fluid" alt="...">
+      </div>
 
-let createCheck = (cardsContainer, arrayData)=>{
-    let newCheck = document.createElement("div")
-    
+      <div class="col-12 col-xl-6 border1912 p-4 my-4 d-flex justify-content-center align-items-center ">
+        <div class="card bg-black text-white" style="width: 18rem;">
+          <div class="card-header">
+            <p class="fs-4 fw-bold fst-italic text-center">${evento.name} </p>
+          </div>
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item bg-secondary text-white">Date: ${evento.date}</li>
+            <li class="list-group-item bg-dark text-white">${evento.description}
+            </li>
+            <li class="list-group-item bg-secondary text-white">Category: ${evento.category}</li>
+            <li class="list-group-item bg-dark text-white">Capacity: ${evento.capacity}</li>
+            <li class="list-group-item bg-secondary text-white">Place: ${evento.place}</li>
+            <li class="list-group-item bg-dark text-white">Price: ${evento.price} USD</li>
+          </ul>
+        </div>
+      </div>
+`
 
-    newCheck.innerHTML = `
-    <input class="mx-1" type="checkbox" name="event" value="${arrayData.category}">
-    <label class="me-1">${arrayData.category}</label>`
-
-    cardsContainer.appendChild(newCheck)
-
-   
-}
-
-let addCheck = (divFather, arrayData)=>{
-   
-    for (let index = 0; index < arrayData.length; index++) {
-        createCheck(divFather,arrayData[index])
-        
-    }}
-
-addCheck(checkDiv, pastEvents)
-
-checkDiv.addEventListener("change", (e)=>{
-   
-  let newArray = pastEvents.filter(arrayCategory => arrayCategory.category == e.target.value)
-  if (e.target.checked) {
-      cardsHtml(newArray, cardsContainer)
-  }else(cardsHtml(pastEvents, cardsContainer))
-  
-  })
-
-
-  // desde aqui barra busqueda
-
-let searchbar = document.getElementById("search")
-
-
-searchbar.addEventListener("input", (e)=>
-   { let searchFilter = pastEvents.filter(array=> array.name.toLowerCase().includes(e.target.value.toLowerCase())
-|| array.description.toLowerCase().includes(e.target.value.toLowerCase()) )
-    if (e.target.value != "") {
-        cardsHtml(searchFilter, cardsContainer)
-    }else(cardsHtml(pastEvents, cardsContainer))
-   }
-
-)
+divContainer.innerHTML = eventDetail
