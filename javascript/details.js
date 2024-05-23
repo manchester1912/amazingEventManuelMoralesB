@@ -222,7 +222,7 @@ let eventDetail = `
             <li class="list-group-item bg-dark text-white">${evento.description}
             </li>
             <li class="list-group-item bg-secondary text-white">Category: ${evento.category}</li>
-            <li class="list-group-item bg-dark text-white">Capacity: ${evento.capacity}</li>
+            <li class="list-group-item bg-dark text-white">${evento.date < data.currentDate?"Assistance: ":"Estimate: "}${evento.assistance || evento.estimate}</li>
             <li class="list-group-item bg-secondary text-white">Place: ${evento.place}</li>
             <li class="list-group-item bg-dark text-white">Price: ${evento.price} USD</li>
           </ul>

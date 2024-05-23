@@ -262,15 +262,22 @@ let addCheck = (divFather, arrayData)=>{
 
 addCheck(checkDiv, upcomingEv)
 
-
-checkDiv.addEventListener("change", (e)=>{
-   
-    let newArray = upcomingEv.filter(arrayCategory => arrayCategory.category == e.target.value)
-    if (e.target.checked) {
-        cardsHtml(newArray, cardsContainer)
-    }else(cardsHtml(upcomingEv, cardsContainer))
-    
+checkDiv.addEventListener("change", (e) => {
+    let checked = document.querySelectorAll("input[type=checkbox]:checked")
+   console.log(checked);
+    let newArray = upcomingEv.filter(arrayCategory => {
+      for (let index = 0; index < checked.length; index++) {
+        if (checked[index].value === arrayCategory.category) {
+          return arrayCategory
+           }
+        }
     })
+    
+    if (checked.length == 0) {
+      cardsHtml(upcomingEv, cardsContainer)
+    } else (cardsHtml(newArray, cardsContainer))
+  
+  })
 
     // desde aqui barra busqueda
 
