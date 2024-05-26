@@ -198,7 +198,7 @@ let data = {
 let divContainer = document.getElementById("fatherContainer")
 
 
-function filterCards() {
+let filterCards = () => {
   let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
   let searchText = document.getElementById("search").value.toLowerCase()
 
@@ -211,15 +211,21 @@ function filterCards() {
   cardsHtml(searchFilter, divContainer)
 }
 
+let withOutResults = document.getElementById("noResults")
 
-function cardsHtml(arrayData, cardsContainer) {
+let cardsHtml = (arrayData, cardsContainer) => {
   cardsContainer.innerHTML = ""
-  arrayData.forEach(event => createdCard(cardsContainer, event))
+
+if (arrayData.length === 0) {
+  withOutResults.style.display = "block"
+}else { arrayData.forEach(event => createdCard(cardsContainer, event))
+  withOutResults.style.display = "none"
 }
 
+}
 
-function createdCard(cardsContainer, card) {
-  let generateCard = document.createElement("div");
+let createdCard = (cardsContainer, card) => {
+  let generateCard = document.createElement("div")
   generateCard.classList.add("cards", "pt-2", "my-2", "mx-2", "text-white")
 
   generateCard.innerHTML =
@@ -227,7 +233,7 @@ function createdCard(cardsContainer, card) {
     <h2>${card.name}</h2>
     <p>${card.description}</p>`
 
-  let newChild = document.createElement("div")
+  let newChild = document.createElement("div");
   newChild.classList.add("price", "fw-bold", "fs-5", "pb-2")
   newChild.innerHTML = `<p>Price: ${card.price} USD</p>
     <a href="/details.html?id=${card._id}" class="btn btn-danger">Details</a>`
@@ -239,7 +245,8 @@ function createdCard(cardsContainer, card) {
 
 let checkDiv = document.getElementById("checkboxFather")
 
-function createCheck(arrayData) {
+
+let createCheck = (arrayData) => {
   checkDiv.innerHTML = ""
   arrayData.forEach(category => {
     let newCheck = document.createElement("div")

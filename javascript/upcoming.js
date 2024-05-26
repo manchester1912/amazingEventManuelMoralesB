@@ -220,10 +220,17 @@ let filterCards = () => {
 }
 
 
+let withOutResults = document.getElementById("noResults")
 
 let cardsHtml = (arrayData, cardsContainer) => {
   cardsContainer.innerHTML = ""
-  arrayData.forEach(event => createdCard(cardsContainer, event))
+
+if (arrayData.length === 0) {
+  withOutResults.style.display = "block"
+}else { arrayData.forEach(event => createdCard(cardsContainer, event))
+  withOutResults.style.display = "none"
+}
+
 }
 
 

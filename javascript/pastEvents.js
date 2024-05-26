@@ -220,11 +220,18 @@ let data = {
   }
   
   
-  
-  let cardsHtml = (arrayData, cardsContainer) => {
-    cardsContainer.innerHTML = ""
-    arrayData.forEach(event => createdCard(cardsContainer, event))
-  }
+  let withOutResults = document.getElementById("noResults")
+
+let cardsHtml = (arrayData, cardsContainer) => {
+  cardsContainer.innerHTML = ""
+
+if (arrayData.length === 0) {
+  withOutResults.style.display = "block"
+}else { arrayData.forEach(event => createdCard(cardsContainer, event))
+  withOutResults.style.display = "none"
+}
+
+}
   
   
   let createdCard = (cardsContainer, card) => {
