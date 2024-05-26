@@ -197,20 +197,29 @@ let data = {
 
 let divContainer = document.getElementById("fatherContainer")
 
-cardsHtml(data.events, divContainer)
+
+function filterCards() {
+  let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
+  let searchText = document.getElementById("search").value.toLowerCase()
+
+  let searchFilter = data.events.filter(event => {
+    let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
+    let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
+    return checkFilter && textFilter
+  })
+
+  cardsHtml(searchFilter, divContainer)
+}
 
 
 function cardsHtml(arrayData, cardsContainer) {
   cardsContainer.innerHTML = ""
-  for (let index = 0; index < arrayData.length; index++) {
-    createdCard(cardsContainer, arrayData[index])
-
-  }
+  arrayData.forEach(event => createdCard(cardsContainer, event))
 }
 
 
 function createdCard(cardsContainer, card) {
-  let generateCard = document.createElement("div")
+  let generateCard = document.createElement("div");
   generateCard.classList.add("cards", "pt-2", "my-2", "mx-2", "text-white")
 
   generateCard.innerHTML =
@@ -220,86 +229,39 @@ function createdCard(cardsContainer, card) {
 
   let newChild = document.createElement("div")
   newChild.classList.add("price", "fw-bold", "fs-5", "pb-2")
-  newChild.innerHTML = ` <p>Price: ${card.price} ${"USD"}</p>
+  newChild.innerHTML = `<p>Price: ${card.price} USD</p>
     <a href="/details.html?id=${card._id}" class="btn btn-danger">Details</a>`
 
-  cardsContainer.appendChild(generateCard)
   generateCard.appendChild(newChild)
-
+  cardsContainer.appendChild(generateCard)
 }
-
-// a partir de aqui sprint 3 url
-
-let arrayCategory = []
-
-data.events.forEach(obj => {
-  if (!arrayCategory.some(item => item.category === obj.category)) {
-    arrayCategory.push(obj)
-  }
-})
-
 
 
 let checkDiv = document.getElementById("checkboxFather")
 
-
-
-let createCheck = (divContainer, arrayData) => {
-  let newCheck = document.createElement("div")
-
-
-  newCheck.innerHTML = `
-    <input class="mx-1" type="checkbox" name="event" value="${arrayData.category}">
-    <label class="me-1">${arrayData.category}</label>`
-
-  divContainer.appendChild(newCheck)
-
-
-}
-
-let addCheck = (divFather, arrayData) => {
-  divFather.innerHTML = ""
-  for (let index = 0; index < arrayData.length; index++) {
-    createCheck(divFather, arrayData[index])
-
-  }
-}
-
-addCheck(checkDiv, arrayCategory)
-
-
-
-checkDiv.addEventListener("change", (e) => {
-  let checked = document.querySelectorAll("input[type=checkbox]:checked")
- console.log(checked);
-  let newArray = data.events.filter(arrayCategory => {
-    for (let index = 0; index < checked.length; index++) {
-      if (checked[index].value === arrayCategory.category) {
-        return arrayCategory
-         }
-      }
+function createCheck(arrayData) {
+  checkDiv.innerHTML = ""
+  arrayData.forEach(category => {
+    let newCheck = document.createElement("div")
+    newCheck.innerHTML = `
+      <input class="mx-1" type="checkbox" name="event" value="${category.category.toLowerCase()}">
+      <label class="me-1">${category.category}</label>`
+    checkDiv.appendChild(newCheck)
   })
-  
-  if (checked.length == 0) {
-    cardsHtml(data.events, divContainer)
-  } else (cardsHtml(newArray, divContainer))
-
-})
+}
 
 
-// desde aqui barra busqueda
+let categories = Array.from(new Set(data.events.map(event => event.category)))
+let categoryValue = categories.map(category => ({ category }))
+
+createCheck(categoryValue)
+
+
+checkDiv.addEventListener("change", filterCards)
+
 
 let searchbar = document.getElementById("search")
+searchbar.addEventListener("input", filterCards)
 
 
-searchbar.addEventListener("input", (e) => {
-  let searchFilter = data.events.filter(array => array.name.toLowerCase().includes(e.target.value.toLowerCase())
-    || array.description.toLowerCase().includes(e.target.value.toLowerCase()))
-  if (e.target.value != "") {
-    cardsHtml(searchFilter, divContainer)
-  } else { cardsHtml(data.events, divContainer) }
-}
-
-)
-
-
+cardsHtml(data.events, divContainer)
