@@ -206,35 +206,35 @@ let data = {
   let cardsContainer = document.getElementById("fatherContainer")
 
 
-  let filterCards = () => {
+  function  filterCards () {
     let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
     let searchText = document.getElementById("search").value.toLowerCase()
   
-    let searchFilter = pastEvents.filter(event => {
-      let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase())
+    let searchFilter = data.events.filter(event => {
+      let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
       let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
-      return checkFilter && textFilter;
-    });
+      return checkFilter && textFilter
+    })
   
-    cardsHtml(searchFilter, cardsContainer)
+    cardsHtml(searchFilter, divContainer)
   }
   
   
   let withOutResults = document.getElementById("noResults")
 
-let cardsHtml = (arrayData, cardsContainer) => {
-  cardsContainer.innerHTML = ""
-
-if (arrayData.length === 0) {
-  withOutResults.style.display = "block"
-}else { arrayData.forEach(event => createdCard(cardsContainer, event))
-  withOutResults.style.display = "none"
-}
-
-}
+  function cardsHtml (arrayData, cardsContainer) {
+    cardsContainer.innerHTML = ""
+  
+  if (arrayData.length === 0) {
+    withOutResults.style.display = "block"
+  }else { arrayData.forEach(event => createdCard(cardsContainer, event))
+    withOutResults.style.display = "none"
+  }
+  
+  }
   
   
-  let createdCard = (cardsContainer, card) => {
+  function createdCard (cardsContainer, card) {
     let generateCard = document.createElement("div")
     generateCard.classList.add("cards", "pt-2", "my-2", "mx-2", "text-white")
   
@@ -255,8 +255,8 @@ if (arrayData.length === 0) {
   
   let checkDiv = document.getElementById("checkboxFather")
   
-  let createCheck = (arrayData) => {
-    checkDiv.innerHTML = "";
+  function createCheck (arrayData) {
+    checkDiv.innerHTML = ""
     arrayData.forEach(category => {
       let newCheck = document.createElement("div")
       newCheck.innerHTML = `
