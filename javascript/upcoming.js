@@ -1,3 +1,5 @@
+import * as moduleFuntions from "./allFuntions.js"
+
 let data = {
     currentDate: "2023-01-01",
     events: [
@@ -203,81 +205,16 @@ for (let index = 0; index < data.events.length; index++) {
     }
 }
 
-let cardsContainer = document.getElementById("fatherContainer")
-
-
-function  filterCards () {
-    let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
-    let searchText = document.getElementById("search").value.toLowerCase()
-  
-    let searchFilter = data.events.filter(event => {
-      let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
-      let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
-      return checkFilter && textFilter
-    })
-  
-    cardsHtml(searchFilter, divContainer)
-  }
-
-
-let withOutResults = document.getElementById("noResults")
-
-function cardsHtml (arrayData, cardsContainer) {
-  cardsContainer.innerHTML = ""
-
-if (arrayData.length === 0) {
-  withOutResults.style.display = "block"
-}else { arrayData.forEach(event => createdCard(cardsContainer, event))
-  withOutResults.style.display = "none"
-}
-
-}
-
-
-function createdCard (cardsContainer, card) {
-    let generateCard = document.createElement("div")
-    generateCard.classList.add("cards", "pt-2", "my-2", "mx-2", "text-white")
-  
-    generateCard.innerHTML =
-      `<img src="${card.image}" alt="">
-      <h2>${card.name}</h2>
-      <p>${card.description}</p>`
-  
-    let newChild = document.createElement("div");
-    newChild.classList.add("price", "fw-bold", "fs-5", "pb-2")
-    newChild.innerHTML = `<p>Price: ${card.price} USD</p>
-      <a href="/details.html?id=${card._id}" class="btn btn-danger">Details</a>`
-  
-    generateCard.appendChild(newChild)
-    cardsContainer.appendChild(generateCard)
-  }
-
-
 let checkDiv = document.getElementById("checkboxFather")
-
-function createCheck (arrayData) {
-    checkDiv.innerHTML = ""
-    arrayData.forEach(category => {
-      let newCheck = document.createElement("div")
-      newCheck.innerHTML = `
-        <input class="mx-1" type="checkbox" name="event" value="${category.category.toLowerCase()}">
-        <label class="me-1">${category.category}</label>`
-      checkDiv.appendChild(newCheck)
-    })
-  }
-
 
 let categories = Array.from(new Set(upcomingEv.map(event => event.category)))
 let categoryValue = categories.map(category => ({ category }))
 
-createCheck(categoryValue)
-
-
-checkDiv.addEventListener("change", filterCards)
-
-
 let searchbar = document.getElementById("search")
-searchbar.addEventListener("input", filterCards)
+searchbar.addEventListener("input", () => moduleFuntions.filterCards(upcomingEv))
 
+checkDiv.addEventListener("change", () => moduleFuntions.filterCards(upcomingEv))
 
-cardsHtml(upcomingEv, cardsContainer)
+moduleFuntions.createCheck(categoryValue)
+
+moduleFuntions.cardsHtml(upcomingEv)

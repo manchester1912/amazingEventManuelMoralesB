@@ -197,30 +197,16 @@ let data = {
   ],
 }
 
-let divContainer = document.getElementById("fatherContainer")
 let checkDiv = document.getElementById("checkboxFather")
 
 let categories = Array.from(new Set(data.events.map(event => event.category)))
 let categoryValue = categories.map(category => ({ category }))
 
 let searchbar = document.getElementById("search")
-searchbar.addEventListener("input", filterCards)
+searchbar.addEventListener("input", () => moduleFuntions.filterCards(data.events))
 
-checkDiv.addEventListener("change", filterCards)
-
-function  filterCards () {
-  let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
-  let searchText = document.getElementById("search").value.toLowerCase()
-
-  let searchFilter = data.events.filter(event => {
-    let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
-    let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
-    return checkFilter && textFilter
-  })
-
-  moduleFuntions.cardsHtml(searchFilter, divContainer)
-}
+checkDiv.addEventListener("change", () => moduleFuntions.filterCards(data.events))
 
 moduleFuntions.createCheck(categoryValue)
 
-moduleFuntions.cardsHtml(data.events, divContainer)
+moduleFuntions.cardsHtml(data.events)

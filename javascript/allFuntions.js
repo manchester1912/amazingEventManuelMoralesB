@@ -16,7 +16,8 @@ export function createdCard (cardsContainer, card) {
   cardsContainer.appendChild(generateCard)
 }
 
-export function cardsHtml (arrayData, cardsContainer) {
+export function cardsHtml (arrayData) {
+    let cardsContainer = document.getElementById("fatherContainer")
     let withOutResults = document.getElementById("noResults")
     cardsContainer.innerHTML = ""
   
@@ -40,15 +41,16 @@ export function createCheck (arrayData) {
     })
   }
 
-// export function  filterCards () {
-//     let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
-//     let searchText = document.getElementById("search").value.toLowerCase()
+export function  filterCards (data, divContainer) {
+   
+    let checked = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(input => input.value.toLowerCase())
+    let searchText = document.getElementById("search").value.toLowerCase()
   
-//     let searchFilter = data.events.filter(event => {
-//       let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
-//       let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
-//       return checkFilter && textFilter
-//     })
+    let searchFilter = data.filter(event => {
+      let checkFilter = checked.length === 0 || checked.includes(event.category.toLowerCase());
+      let textFilter = searchText === '' || event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
+      return checkFilter && textFilter
+    })
   
-//     cardsHtml(searchFilter, divContainer)
-//   }
+    cardsHtml(searchFilter)
+  }
