@@ -92,3 +92,11 @@ td {
         display: none;
         padding: 16vh 0;
 }
+
+.container {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        height: 100vh
+    }
+    
