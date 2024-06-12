@@ -12,11 +12,11 @@ let evento = data.events.find(evento=> evento._id === parseInt(details))
 let divContainer = document.getElementById("fatherContainer")
 
 let eventDetail = `
-<div class="col-12 col-xl-6 d-flex justify-content-center p-4 my-4 border1912">
-        <img src="${evento.image}" class="img-fluid" alt="...">
+<div class="col-12 col-xl-6 d-flex justify-content-center p-1 my-1 border1912">
+        <img src="${evento.image}" class="img-fluid w-50" alt="...">
       </div>
 
-      <div class="col-12 col-xl-6 border1912 p-4 my-4 d-flex justify-content-center align-items-center ">
+      <div class="col-12 col-xl-6 border1912 p-1 my-1 d-flex justify-content-center align-items-center ">
         <div class="card bg-black text-white" style="width: 18rem;">
           <div class="card-header">
             <p class="fs-4 fw-bold fst-italic text-center">${evento.name} </p>

@@ -9,8 +9,8 @@
 }
 
 .border1912 {
-        border: 3vw solid grey;
-       
+        border: 8px solid grey;
+        border-radius: 15px       
 }
 
 .carousel1 {
@@ -98,5 +98,9 @@ td {
         justify-content: center; 
         align-items: center;
         height: 100vh
+    }
+
+    #mainDetails {
+        min-height: 100vh;
     }
     
