@@ -81,7 +81,7 @@
 let arraySumadoPorCategoria = Object.keys(sumadoPorCategoria).map(key => sumadoPorCategoria[key])
 
 printData(arraySumadoPorCategoria)
-console.log(arraySumadoPorCategoria)
+
 
  })
 
@@ -132,7 +132,7 @@ console.log(arraySumadoPorCategoria)
 let arraySumadoPorCategoria = Object.keys(sumadoPorCategoria).map(key => sumadoPorCategoria[key])
 
 printData(arraySumadoPorCategoria)
-console.log(arraySumadoPorCategoria)
+
 
  })
 
