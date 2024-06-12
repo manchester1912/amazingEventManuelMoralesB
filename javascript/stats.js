@@ -66,22 +66,22 @@
          pastEvents.push(data2.events[index])
       }
     }
-  let nuevoArray = pastEvents.map(evento => ({category: evento.category, assistance: evento.assistance, price: evento.price, capacity: evento.capacity}))
+  let newArray = pastEvents.map(event => ({category: event.category, assistance: event.assistance, price: event.price, capacity: event.capacity}))
 
-  let sumadoPorCategoria = nuevoArray.reduce((sumado, evento) => {
-    if (!sumado[evento.category]) {
-        sumado[evento.category] = { category: evento.category, assistance: 0, price: 0, capacity: 0 }
+  let filterCategory = newArray.reduce((added, event) => {
+    if (!added[event.category]) {
+        added[event.category] = { category: event.category, assistance: 0, price: 0, capacity: 0 }
     }
-    sumado[evento.category].assistance += evento.assistance
-    sumado[evento.category].price += evento.price
-    sumado[evento.category].capacity += evento.capacity
-    return sumado
+    added[event.category].assistance += event.assistance
+    added[event.category].price += event.price
+    added[event.category].capacity += event.capacity
+    return added
 }, {})
 
-let arraySumadoPorCategoria = Object.keys(sumadoPorCategoria).map(key => sumadoPorCategoria[key])
+let arrayCategory = Object.keys(filterCategory).map(key => filterCategory[key])
 
-printData(arraySumadoPorCategoria)
-console.log(arraySumadoPorCategoria)
+printData(arrayCategory)
+
 
  })
 
@@ -117,23 +117,21 @@ console.log(arraySumadoPorCategoria)
             upcomingEv.push(data2.events[index])
         }
     }
-  let nuevoArray = upcomingEv.map(evento => ({category: evento.category, estimate: evento.estimate, price: evento.price, capacity: evento.capacity}))
+  let newArray = upcomingEv.map(event => ({category: event.category, estimate: event.estimate, price: event.price, capacity: event.capacity}))
 
-  let sumadoPorCategoria = nuevoArray.reduce((sumado, evento) => {
-    if (!sumado[evento.category]) {
-        sumado[evento.category] = { category: evento.category, estimate: 0, price: 0, capacity: 0 }
+  let filterCategory = newArray.reduce((added, event) => {
+    if (!added[event.category]) {
+        added[event.category] = { category: event.category, estimate: 0, price: 0, capacity: 0 }
     }
-    sumado[evento.category].estimate += evento.estimate
-    sumado[evento.category].price += evento.price
-    sumado[evento.category].capacity += evento.capacity
-    return sumado
+    added[event.category].estimate += event.estimate
+    added[event.category].price += event.price
+    added[event.category].capacity += event.capacity
+    return added
 }, {})
 
-let arraySumadoPorCategoria = Object.keys(sumadoPorCategoria).map(key => sumadoPorCategoria[key])
+let arrayCategory = Object.keys(filterCategory).map(key => filterCategory[key])
 
-printData(arraySumadoPorCategoria)
-console.log(arraySumadoPorCategoria)
-
+printData(arrayCategory)
  })
 
 
