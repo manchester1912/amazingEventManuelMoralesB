@@ -86,70 +86,62 @@
         </button>
       </div>
     </div>
-    <div class="row container-fluid tableEvents text-center pe-0 ps-4 py-4 my-3">
 
-      <div class="col d-flex justify-content-center">
+    <div class="container">
+      <div class="row w-75 align-items-center">
         <table>
           <thead>
             <tr>
-              <th class="fs-4 bg-dark text-white" colspan="3">Event Statics</th>
+              <th class="fs-4 bg-dark text-center text-white" colspan="3">Event Statics</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="fw-bold fst-italic">Events with highest % of assistance</td>
-              <td class="fw-bold fst-italic">Events with lowest % of assistance</td>
-              <td class="fw-bold fst-italic">Events with larger capacity</td>
+              <td class="fw-bold fst-italic text-center">Events with highest % of assistance</td>
+              <td class="fw-bold fst-italic text-center">Events with lowest % of assistance</td>
+              <td class="fw-bold fst-italic text-center">Events with larger capacity</td>
             </tr>
             <tr>
-              <td id="highest"></td>
-              <td id="lowest"></td>
-              <td id="capacity"></td>
+              <td id="highest" class="text-center fs-6"></td>
+              <td id="lowest" class="text-center fs-6"></td>
+              <td id="capacity" class="text-center fs-6"></td>
+            </tr>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th class="fs-4 bg-dark text-center text-white" colspan="3">Upcoming events statistics by category</th>
             </tr>
             <tr>
-              <th class="fs-4 bg-dark text-white" colspan="3">Upcoming events statistics by category</th>
+              <td class="fw-bold fst-italic text-center">Categories</td>
+              <td class="fw-bold fst-italic text-center">Revenues</td>
+              <td class="fw-bold fst-italic text-center">Percentage of assistance</td>
             </tr>
-            <tr>
-              <td class="fw-bold fst-italic">Categories</td>
-              <td class="fw-bold fst-italic">Revenues</td>
-              <td class="fw-bold fst-italic">Percentage of assistance</td>
-            </tr>
-            <tr>
-              <td>Music Concert</td>
-              <td>20,700,000.00 USD</td>
-              <td>100%</td>
-            </tr>
-            <tr>
-              <td>Let's go to the cinema</td>
-              <td>2,250,000.00 USD</td>
-              <td>100%</td>
-            </tr>
-            <tr>
-            <th class="fs-4 bg-dark text-white" colspan="3">Past events statistics by category</th>
-            </tr>
+          </thead>
+          <tbody id="fatherTable">
 
+          </tbody>
+        </table>
+        <table>
+          <thead>
             <tr>
-              <td class="fw-bold fst-italic">Categories</td>
-              <td class="fw-bold fst-italic">Revenues</td>
-              <td class="fw-bold fst-italic">Percentage of assistance</td>
+              <th class="fs-4 bg-dark text-center text-white" colspan="3">Past events statistics by category</th>
             </tr>
             <tr>
-              <td>Food Fair</td>
-              <td>213,780.00 USD</td>
-              <td>95.01%</td>
+              <td class="fw-bold fst-italic text-center">Categories</td>
+              <td class="fw-bold fst-italic text-center">Revenues</td>
+              <td class="fw-bold fst-italic text-center">Percentage of assistance</td>
             </tr>
-            <tr>
-              <td>Race</td>
-              <td>77,094.00 USD</td>
-              <td>85.66%</td>
-            </tr>
+          </thead>
+          <tbody id="fatherTable2">
+           
           </tbody>
 
         </table>
       </div>
 
-
     </div>
+
   </main>
   <footer>
     <div class="row justify-content-between align-items-center bg-secondary text-white py-3 container-fluid m-0">
@@ -171,7 +163,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script src="/javascript/stats.js"></script>
+  <script src="/javascript/stats.js"></script>
 
 
 </body>
