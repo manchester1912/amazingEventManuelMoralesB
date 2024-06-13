@@ -1,17 +1,17 @@
-  const linkAmazing = "https://aulamindhub.github.io/amazing-api/events.json"
+const linkAmazing = "https://aulamindhub.github.io/amazing-api/events.json"
 
-  fetch(linkAmazing)
+fetch(linkAmazing)
   .then(response => response.json())
   .then(data => {
     let UrlParams = new URLSearchParams(window.location.search)
 
-let details = UrlParams.get("id")
+    let details = UrlParams.get("id")
 
-let evento = data.events.find(evento=> evento._id === parseInt(details))
+    let evento = data.events.find(evento => evento._id === parseInt(details))
 
-let divContainer = document.getElementById("fatherContainer")
+    let divContainer = document.getElementById("fatherContainer")
 
-let eventDetail = `
+    let eventDetail = `
 <div class="col-12 col-xl-6 d-flex justify-content-center p-1 my-1 border1912">
         <img src="${evento.image}" class="img-fluid w-50" alt="...">
       </div>
@@ -26,7 +26,7 @@ let eventDetail = `
             <li class="list-group-item bg-dark text-white">${evento.description}
             </li>
             <li class="list-group-item bg-secondary text-white">Category: ${evento.category}</li>
-            <li class="list-group-item bg-dark text-white">${evento.date < data.currentDate?"Assistance: ":"Estimate: "}${(evento.assistance || evento.estimate).toLocaleString()}</li>
+            <li class="list-group-item bg-dark text-white">${evento.date < data.currentDate ? "Assistance: " : "Estimate: "}${(evento.assistance || evento.estimate).toLocaleString()}</li>
             <li class="list-group-item bg-secondary text-white">Place: ${evento.place}</li>
             <li class="list-group-item bg-dark text-white">Price: ${evento.price} USD</li>
           </ul>
@@ -34,10 +34,10 @@ let eventDetail = `
       </div>
 `
 
-divContainer.innerHTML = eventDetail
-  
+    divContainer.innerHTML = eventDetail
+
   })
-  
+
 
 
 
