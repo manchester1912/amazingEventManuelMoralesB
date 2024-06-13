@@ -9,8 +9,9 @@
 }
 
 .border1912 {
-        border: 8px solid grey;
-        border-radius: 15px       
+        border: 6px solid grey;
+        border-radius: 15px;
+        min-height: 46.5vh;   
 }
 
 .carousel1 {
