@@ -11,7 +11,7 @@
 .border1912 {
         border: 6px solid grey;
         border-radius: 15px;
-        min-height: 46.5vh;   
+        min-height: 46.5vh;
 }
 
 .carousel1 {
@@ -22,7 +22,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-     
+
 
 }
 
@@ -46,6 +46,13 @@ td {
         padding: 0 0.5vw;
 }
 
+.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh
+}
+
 
 /* styles for javascript*/
 
@@ -58,7 +65,7 @@ td {
         justify-content: space-between;
         align-items: center;
         text-align: center;
-      
+
         border-radius: 15px;
 
 }
@@ -86,22 +93,10 @@ td {
         align-items: center;
 }
 
-#noResults{
-        
+#noResults {
+
         color: red;
         text-align: center;
         display: none;
         padding: 16vh 0;
 }
-
-.container {
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        height: 100vh
-    }
-
-    #mainDetails {
-        min-height: 100vh;
-    }
-    
